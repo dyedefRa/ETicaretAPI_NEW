@@ -1,2 +1,36 @@
-------------------------------
-1. IOC
+﻿------------------------------
+1. IOC > Persistence da eklendi.
+
+
+------------------------ ONION ARTHITECTURE-----------------------------------------------------
+
+Domain > Merkez katmanı 
+Entity,Value Object,Enumaration
+------------------
+Application >
+Domain ile iş katmanı arasında soyutlama katmanıdır.
+Tüm servis interfaceleri burada tanımlanır.
+Dto,ViewModel,Mapping,Validations,CQRS Pattern vs burada oluşturulur.
+------------------
+Persistence Katmanı >
+Veritabanı operasyonlar , veri erişim mantığı olan tüm işler burada yapılır.
+DbContext,Migration,Configuration,Seeding Repository,Concrete Class buraya.
+------------------
+Infrastructure Katmanı
+Veritabanı dışındaki operasyonlar,servis işlemlerini burada yaparsın.
+Email Servis , Sms,Notification , Payment vs diğer dış servisler
+------------------
+Presentation Katmanı >
+Kıllanıcının uygulamaya iletişime geçtiği katman
+WebApp ,WebApi,MVC vs vs
+
+------------------------------------------------------------------------------------------------
+EntityFramework ile PostgreSQL kullanacağız o yüzden 
+Persistence a NuGettan indir;
+
+Npgsql.EntityFrameworkCore.PostgreSQL
+
+ServiceRegistration de ayarları yaptık.
+
+DBeaverdan kontrol ediyoruz.
+Tabi Dockerdan postgresql container i çalıştırdık.
